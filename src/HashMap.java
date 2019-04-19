@@ -65,9 +65,37 @@ public class HashMap<K,V> {
         if(!exists){
             size++;
             pos = array.get(index);
-            HashNode<K,V> new_node = new HashNode<K,V>(key, value);
+            HashNode<K,V> new_node = new HashNode<>(key, value);
             new_node.setNext(pos);
             array.set(index, new_node);
         }   //if
+    }
+
+    public boolean remove(K key){
+        int index = getNode(key);
+        boolean found = false;
+        HashNode<K,V> node = array.get(index);
+        HashNode<K,V> prev_node = null;
+
+        while(node != null && !found){
+            if(node.getKey().equals(key))
+                found = true;
+            else {
+                prev_node = node;
+                node = node.getNext();
+            }   //else
+        }   //while
+
+        if(node == null)
+            return false;
+
+        size--;
+
+        if(prev_node != null)
+            prev_node.setNext(node.getNext());
+        else
+            array.set(index, node.getNext());
+
+        return true;
     }
 }

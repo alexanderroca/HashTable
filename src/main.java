@@ -4,15 +4,13 @@ public class main {
 
         hashTable.add(1, 2);
         hashTable.add(2, 1);
-        hashTable.add(3, 1);
-        hashTable.add(4, 1);
-        hashTable.add(5, 1);
-        hashTable.add(6, 1);
-        hashTable.add(7, 1);
+        hashTable.add(7, 3);
 
-       Object aux = hashTable.get(1);
-        hashTable.get(5);
-        hashTable.get(2);
-        hashTable.get(7);
+
+        int value = (int) hashTable.get(2);
+
+        boolean result = hashTable.remove(7);
+        result = hashTable.remove(2);
+        System.out.println("END");
     }
 }
